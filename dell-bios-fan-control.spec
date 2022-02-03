@@ -1,11 +1,11 @@
 %define debug_package %{nil}
 
 Summary: Disable/Enable BIOS fan control on  Dell laptops
-Name: {{{ git_name }}}
-Version: {{{ git_version lead=0 follow=02 }}}
+Name: {{{ git_dir_name }}}
+Version: {{{ git_dir_version lead=0 follow=02 }}}
 Release: 1%{?dist}
 License: GPLv2+
-Source: {{{ git_pack }}}
+Source: {{{ git_dir_pack }}}
 URL: https://github.com/TomFreudenberg/dell-bios-fan-control
 BuildRequires: gcc
 Provides: %{name}-%{version}-%{release}
@@ -14,19 +14,18 @@ Provides: %{name}-%{version}-%{release}
 A tool that enables/disables the BIOS fan control on some Dell Laptops. This is required on some Notebooks to be able to control fanspeed with i8kmon, without the BIOS immediately overruling it again.
 
 %prep
-rm -rf %buildroot
-{{{ git_setup_macro }}}
+{{{ git_dir_setup_macro }}}
 
 %build
 make
 
 %install
-mkdir -p $RPM_BUILD_ROOT/%{_sbindir}
-cp dell-bios-fan-control $RPM_BUILD_ROOT/%{_sbindir}/
+mkdir -p %{buildroot}/%{_sbindir}
+cp dell-bios-fan-control %{buildroot}/%{_sbindir}/
 
 %clean
+rm -rf %{buildroot}/%{_sbindir}
 make clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-, root, root)
