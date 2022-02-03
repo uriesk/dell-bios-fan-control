@@ -2,13 +2,12 @@
 
 Summary: Disable/Enable BIOS fan control on  Dell laptops
 Name: {{{ git_name }}}
-Version: {{{ git_version lead=0 follow=01 }}}
+Version: {{{ git_version lead=0 follow=02 }}}
 Release: 1%{?dist}
 License: GPLv2+
 Source: {{{ git_pack }}}
 URL: https://github.com/TomFreudenberg/dell-bios-fan-control
 BuildRequires: gcc
-Requires: ld-linux.so.2 libc.so.6
 Provides: %{name}-%{version}-%{release}
 
 %description
