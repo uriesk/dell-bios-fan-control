@@ -3,7 +3,7 @@
 Summary: Disable/Enable BIOS fan control on  Dell laptops
 Name: {{{ git_dir_name }}}
 Version: {{{ git_dir_version lead=0 follow=02 }}}
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPLv2+
 Source: {{{ git_dir_pack }}}
 URL: https://github.com/TomFreudenberg/dell-bios-fan-control
@@ -20,16 +20,16 @@ A tool that enables/disables the BIOS fan control on some Dell Laptops. This is 
 make
 
 %install
-mkdir -p %{buildroot}/%{_sbindir}
-cp dell-bios-fan-control %{buildroot}/%{_sbindir}/
+mkdir -p %{buildroot}/%{_bindir}
+cp dell-bios-fan-control %{buildroot}/%{_bindir}/
 
 %clean
-rm -rf %{buildroot}/%{_sbindir}
+rm -rf %{buildroot}/%{_bindir}
 make clean
 
 %files
 %defattr(-, root, root)
-%{_sbindir}/dell-bios-fan-control
+%{_bindir}/dell-bios-fan-control
 
 %changelog
 * Sun Jun 3 2018 uriesk <uriesk@posteo.de> 1.43
